@@ -131,6 +131,20 @@ const config = createConfig({
 
 const queryClient = new QueryClient();
 
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <OverviewProvider>
+      <WagmiProvider config={config}>
+        <QueryClientProvider client={queryClient}>
+          <RainbowKitProvider>
+            <Component {...pageProps} />
+          </RainbowKitProvider>
+        </QueryClientProvider>
+      </WagmiProvider>
+    </OverviewProvider>
+  );
+}
+
 function FarcasterFrameProvider({ children }: React.PropsWithChildren<{}>) {
   const [isClient, setIsClient] = useState(false);
 
@@ -166,22 +180,6 @@ function FarcasterFrameProvider({ children }: React.PropsWithChildren<{}>) {
   // Only render children on client-side
   if (!isClient) return null;
   return <>{children}</>;
-}
-
-function MyApp({ Component, pageProps }: AppProps) {
-  return (
-    <OverviewProvider>
-      <WagmiProvider config={config}>
-        <QueryClientProvider client={queryClient}>
-          <RainbowKitProvider>
-            <FarcasterFrameProvider>
-              <Component {...pageProps} />
-            </FarcasterFrameProvider>
-          </RainbowKitProvider>
-        </QueryClientProvider>
-      </WagmiProvider>
-    </OverviewProvider>
-  );
 }
 
 export default MyApp;
