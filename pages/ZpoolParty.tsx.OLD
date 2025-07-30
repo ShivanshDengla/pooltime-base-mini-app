@@ -27,7 +27,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import V4 from "../components/v4";
-
+import ExternalIconLink from '../components/ExternalIconLink';
 
 
 interface Vault {
@@ -166,10 +166,10 @@ const PoolParty = (): JSX.Element => {
     <span>This protocol is NEW. &nbsp;Have old deposits? Migrate now!
       &nbsp;
     <div style={{ display: "inline", cursor: "pointer" }}>
-  <a href="https://migrate.cabana.fi" target="_blank" rel="noopener noreferrer">
+  <ExternalIconLink url={(() => {const base='https://migrate.cabana.fi'; return base;})()}>
     <FontAwesomeIcon icon={faUpRightFromSquare} height={15} width={15}></FontAwesomeIcon>
     {/* Migrate now &nbsp;<FontAwesomeIcon icon={faUpRightFromSquare} height={15} width={15}></FontAwesomeIcon> */}
-  </a>
+  </ExternalIconLink>
 </div>
 </span></div>
       

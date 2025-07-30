@@ -6,6 +6,7 @@ import PrizeValueIcon from "./prizeValueIcon";
 import PrizeValue from "./prizeValue";
 import IconDisplay from "./icons";
 import { useOverview } from "./contextOverview";
+import ExternalIconLink from './ExternalIconLink';
 function getVaultName(vaultAddress: string, vaults: any[]) {
   const vault = vaults.find(
     (v) => v.vault.toLowerCase() === vaultAddress.toLowerCase()
@@ -192,10 +193,8 @@ const WinsListModal: React.FC<WinsModalProps> = ({
                       address.length - 4
                     )}`}
                   {address && (
-                    <a
-                      href={`https://debank.com/profile/${address}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <ExternalIconLink
+                      url={`https://debank.com/profile/${address}`}
                       style={{ display: "inline-flex" }}
                     >
                       <Image
@@ -204,7 +203,7 @@ const WinsListModal: React.FC<WinsModalProps> = ({
                         height={16}
                         alt="View on Debank"
                       />
-                    </a>
+                    </ExternalIconLink>
                   )}
                 </h5>
                 <div>

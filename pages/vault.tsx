@@ -53,6 +53,7 @@ import { optimism } from "viem/chains";
 import { call } from "viem/actions";
 import DrawCountdown from "../components/drawCountdown";
 // import Drip from "./drip";
+import ExternalIconLink from '../components/ExternalIconLink';
 
 interface vaultApi {
   name: string;
@@ -2243,22 +2244,18 @@ const Vault: React.FC<VaultProps> = ({
                                   CopyToClipboardButton(activeVaultAddress)
                                 }
                               />
-                              <a
-                                href={
-                                  ADDRESS[GetChainName(activeVaultChain)]
-                                    .ETHERSCAN +
-                                  "address/" +
-                                  activeVaultAddress
-                                }
-                                target="_blank"
-                                rel="noreferrer">
+                              <ExternalIconLink url={
+                                ADDRESS[GetChainName(activeVaultChain)].ETHERSCAN +
+                                'address/' +
+                                activeVaultAddress
+                              }>
                                 <Image
                                   src="/images/etherscan.svg"
                                   height={14}
                                   width={14}
                                   alt="etherscan"
                                 />
-                              </a>
+                              </ExternalIconLink>
                             </span>
                           </div>
                           <hr className="condensed-hr" />
@@ -2286,22 +2283,18 @@ const Vault: React.FC<VaultProps> = ({
                                   CopyToClipboardButton(vaultData.owner)
                                 }
                               />
-                              <a
-                                href={
-                                  ADDRESS[GetChainName(activeVaultChain)]
-                                    .ETHERSCAN +
-                                  "address/" +
-                                  vaultData.owner
-                                }
-                                target="_blank"
-                                rel="noreferrer">
+                              <ExternalIconLink url={
+                                ADDRESS[GetChainName(activeVaultChain)].ETHERSCAN +
+                                'address/' +
+                                vaultData.owner
+                              }>
                                 <Image
                                   src="/images/etherscan.svg"
                                   height={14}
                                   width={14}
                                   alt="etherscan"
                                 />
-                              </a>
+                              </ExternalIconLink>
                             </span>
                           </div>
                           <hr className="condensed-hr" />
@@ -2315,7 +2308,9 @@ const Vault: React.FC<VaultProps> = ({
     <span className="address-label">Asset</span>
     <span className="address-data small-font">
         {vaultData.asset} &nbsp; &nbsp;
-        <a href={"https://optimistic.etherscan.io/address/"+vaultData.asset} target="_blank" rel="noreferrer"><Image src="/images/etherscan.svg" height={14} width={14} alt="etherscan" /></a>
+        <ExternalIconLink url={"https://optimistic.etherscan.io/address/" + vaultData.asset}>
+          <Image src="/images/etherscan.svg" height={14} width={14} alt="etherscan" />
+        </ExternalIconLink>
     </span>
 </div> */}
                           {/* <hr className="condensed-hr"/> */}
@@ -2348,22 +2343,18 @@ const Vault: React.FC<VaultProps> = ({
                                   )
                                 }
                               />
-                              <a
-                                href={
-                                  ADDRESS[GetChainName(activeVaultChain)]
-                                    .ETHERSCAN +
-                                  "address/" +
-                                  vaultData.liquidationPair
-                                }
-                                target="_blank"
-                                rel="noreferrer">
+                              <ExternalIconLink url={
+                                ADDRESS[GetChainName(activeVaultChain)].ETHERSCAN +
+                                'address/' +
+                                vaultData.liquidationPair
+                              }>
                                 <Image
                                   src="/images/etherscan.svg"
                                   height={14}
                                   width={14}
                                   alt="etherscan"
                                 />
-                              </a>
+                              </ExternalIconLink>
                             </span>
                           </div>
                           <hr className="condensed-hr" />
@@ -2392,22 +2383,18 @@ const Vault: React.FC<VaultProps> = ({
                                   CopyToClipboardButton(vaultData.asset)
                                 }
                               />
-                              <a
-                                href={
-                                  ADDRESS[GetChainName(activeVaultChain)]
-                                    .ETHERSCAN +
-                                  "address/" +
-                                  vaultData.asset
-                                }
-                                target="_blank"
-                                rel="noreferrer">
+                              <ExternalIconLink url={
+                                ADDRESS[GetChainName(activeVaultChain)].ETHERSCAN +
+                                'address/' +
+                                vaultData.asset
+                              }>
                                 <Image
                                   src="/images/etherscan.svg"
                                   height={14}
                                   width={14}
                                   alt="etherscan"
                                 />
-                              </a>
+                              </ExternalIconLink>
                             </span>
                           </div>
                         </>

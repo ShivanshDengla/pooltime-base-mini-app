@@ -12,6 +12,7 @@ import { CSSProperties } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLink } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import ExternalIconLink from './ExternalIconLink';
 
 interface WinProps {
     addressProp: string;
@@ -177,7 +178,7 @@ const fetchBalances = async () => {
       <div style={styles.alignBottom}>
 
       <Image src="https://assets.coingecko.com/coins/images/6319/standard/usdc.png?1696506694" height={20} width={20} alt="USDC" />&nbsp;{(Number(totalBalance)/1e6).toFixed(2)}
-      &nbsp; <a href="https://migrate.cabana.fi" target="_blank" rel="noopener noreferrer">
+      &nbsp; <ExternalIconLink url={(() => {const base='https://migrate.cabana.fi'; return base;})()}>
   <FontAwesomeIcon icon={faExternalLink}
                    size="sm"
                    style={{
@@ -186,7 +187,7 @@ const fetchBalances = async () => {
                      paddingLeft: "15px",
                    }}
   />
-</a>
+</ExternalIconLink>
       </div></div></div></div>}
       <ToastContainer />
     </div>

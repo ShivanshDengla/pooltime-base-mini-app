@@ -4,6 +4,7 @@ import { ethers } from 'ethers';
 import { Eighteener } from '../utils/tokenMaths';
 import PrizeIcon from './prizeIcon';
 import {ADDRESS,CONFIG} from '../constants/'
+import ExternalIconLink from './ExternalIconLink';
 
 interface RngHistoryProps {
   events: [];
@@ -108,14 +109,14 @@ if(events){reversedEvents = [...events].reverse();}
             </div>
             <div style={{ width: '45%', textAlign: 'right', fontSize: '15px' }}>
               <div style={{ marginBottom: '4px' }}>
-                <a href={`${ADDRESS[CONFIG.CHAINNAME].ETHERSCAN}/tx/${event.drawStarted.transactionHash}`}>
+                <ExternalIconLink url={`${ADDRESS[CONFIG.CHAINNAME].ETHERSCAN}/tx/${event.drawStarted.transactionHash}`}>
                   <Image
                     src="/images/etherscan.svg"
                     height={12}
                     width={12}
                     alt="etherscan"
                   />
-                &nbsp;RNG</a>
+                &nbsp;RNG</ExternalIconLink>
               </div>
               {/* {event.} */}
               {event.drawStarted &&
@@ -141,7 +142,7 @@ if(events){reversedEvents = [...events].reverse();}
             <div style={{ width: '45%', textAlign: 'right', paddingRight: '10px' }}>
               {event.drawFinished.reward > 0   &&       <>  
               <div style={{ marginBottom: '4px', fontSize: '15px'}}>
-              <a href={`${ADDRESS[CONFIG.CHAINNAME].ETHERSCAN}/tx/${event.drawFinished.transactionHash}`}>
+              <ExternalIconLink url={`${ADDRESS[CONFIG.CHAINNAME].ETHERSCAN}/tx/${event.drawFinished.transactionHash}`}>
                   <Image
                     src="/images/etherscan.svg"
                     height={12}
@@ -149,7 +150,7 @@ if(events){reversedEvents = [...events].reverse();}
                     alt="etherscan"
                   />
               &nbsp;
-                DRAW  </a></div>
+                DRAW  </ExternalIconLink></div>
                 {event.drawFinished.reward > 0 &&
                 <div>
                 <span style={{ fontSize: '17px' }}>

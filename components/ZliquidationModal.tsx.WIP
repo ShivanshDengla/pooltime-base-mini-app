@@ -18,6 +18,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Approve from "../components/approve";
+import ExternalIconLink from './ExternalIconLink';
 // import { useAccount } from "wagmi";
 // import { Bar } from 'react-chartjs-2';
 // import { Chart, BarController, LinearScale, CategoryScale } from 'chart.js';
@@ -180,13 +181,13 @@ const LiquidationModal: React.FC<any> = ({
         toast(
           <>
             Swap success! &nbsp;
-            <a href={etherscanLink} target="_blank" rel="noopener noreferrer">
+            <ExternalIconLink url={etherscanLink}>
               <FontAwesomeIcon
                 icon={faUpRightFromSquare}
                 height={15}
                 width={15}
               />
-            </a>
+            </ExternalIconLink>
           </>,
           { position: toast.POSITION.BOTTOM_LEFT }
         );

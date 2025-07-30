@@ -72,16 +72,7 @@ export const DepositSuccessModal: React.FC<TransactionModalProps> = ({
             <div style={styles.headerText}>
               <span className="hidden-mobile">
                 DEPOSIT SUCCESS
-                {/* {hash.length>0 &&  
-<a
-                            href={`${ADDRESS[CONFIG.CHAINNAME].ETHERSCAN}/tx/${hash}`}
-                            target="_blank"
-                            rel="noreferrer">&nbsp;<Image
-            src="/images/etherscan.svg"
-            height={18}
-            width={18}
-            alt="etherscan"
-          /></a>} */}
+                {/* {hash.length>0 &&  View on Etherscan } */}
               </span>
               {/* {selectedWinValue && GetChainName(Number(selectedWinValue.network))} */}
             </div>

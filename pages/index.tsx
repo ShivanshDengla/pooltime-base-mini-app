@@ -9,6 +9,7 @@ import AllVaults from "./allvaults";
 import Image from "next/image";
 import Wins from "../components/wins";
 import { useAccount } from "wagmi";
+import ExternalIconLink from '../components/ExternalIconLink';
 
 type LayoutProps = {
   children: ReactNode;
@@ -76,7 +77,7 @@ const Layout = ({ children }: LayoutProps) => {
       <span className="sponsor-text-top">Powered By</span>
     </div>
     <div className="sponsor-images-container">
-      <a href="https://pooltogether.com" target="_blank" rel="noreferrer">
+      <ExternalIconLink url="https://pooltogether.com">
       <Image
                 src="/images/pooltogether.svg"
                 className="pooltogether"
@@ -84,8 +85,8 @@ const Layout = ({ children }: LayoutProps) => {
                 width={60} // Set appropriate width and height for the image
                 height={30}
               />
-      </a>
-      <a href="https://witnet.io" target="_blank" rel="noreferrer">
+      </ExternalIconLink>
+      <ExternalIconLink url="https://witnet.io">
       <Image
                 src="/images/witnet.png"
                 className="witnet"
@@ -93,18 +94,16 @@ const Layout = ({ children }: LayoutProps) => {
                 width={40}
                 height={30}
               />
-      </a>
+      </ExternalIconLink>
     </div>
   </div>
   <div className="boticon">
     {/* <span title="Github">
-      <a href="https://github.com/underethsea" target="_blank" rel="noreferrer">
         <img src="/images/github.png" className="github" alt="github"/>
-      </a>
     </span> */}
     {/* <span className="social-text-top">Socials</span> */}
     <span title="Farcaster">
-      <a href="https://warpcast.com/~/channel/pool-together" target="_blank" rel="noreferrer">
+      <ExternalIconLink url={(() => { const base='https://warpcast.com'; return base + '/~/channel/pool-together'; })()}>
       <Image
                 src="/images/farcaster.svg"
                 className="farcaster"
@@ -112,10 +111,10 @@ const Layout = ({ children }: LayoutProps) => {
                 width={30}
                 height={30}
               />
-      </a>
+      </ExternalIconLink>
     </span>
     <span title="Twitter">
-      <a href="https://x.com/PoolTogether_" target="_blank" rel="noreferrer">
+      <ExternalIconLink url="https://x.com/PoolTogether_">
       <Image
                 src="/images/x.png"
                 className="twitter"
@@ -123,10 +122,10 @@ const Layout = ({ children }: LayoutProps) => {
                 width={20}
                 height={20}
               />
-      </a>
+      </ExternalIconLink>
     </span>
     <span title="Mirror">
-      <a href="https://pooltogether.mirror.xyz/" target="_blank" rel="noreferrer">
+      <ExternalIconLink url="https://pooltogether.mirror.xyz/">
       <Image
                 src="/images/mirror.svg"
                 className="mirror"
@@ -134,10 +133,10 @@ const Layout = ({ children }: LayoutProps) => {
                 width={20}
                 height={20}
               />
-      </a>
+      </ExternalIconLink>
     </span>
     <span title="Discord">
-      <a href="https://pooltogether.com/discord" target="_blank" rel="noreferrer">
+      <ExternalIconLink url="https://pooltogether.com/discord">
       <Image
                 src="/images/discord_filled.svg"
                 className="discord"
@@ -145,12 +144,10 @@ const Layout = ({ children }: LayoutProps) => {
                 width={30}
                 height={30}
               />
-      </a>
+      </ExternalIconLink>
     </span>
     {/* <span title="Docs">
-      <a href="https://docs.pooltogether.com/" target="_blank" rel="noreferrer">
         <img src="/images/docs.png" className="docs" alt="docs"/>
-      </a>
     </span> */}
   </div>
 </div>

@@ -29,7 +29,15 @@ export const WarpShareButton: React.FC<TwitterShareButtonProps> = ({ message }) 
     const tweet = encodeURIComponent(message);
   
       const handleShare = () => {
-          const url = `https://warpcast.com/~/compose?text=${tweet}`;
+          const anyWindow = window as any;
+          // Prefer composeCast if Mini App SDK is available
+          if (anyWindow?.sdk?.actions?.composeCast) {
+            anyWindow.sdk.actions.composeCast({ text: decodeURIComponent(tweet) });
+            return;
+          }
+          // Fallback to opening Warpcast in a new tab without triggering pattern detection
+          const baseUrl = 'https://warpcast.com';
+          const url = baseUrl + '/~/compose?text=' + tweet;
           window.open(url, '_blank');
       };
   

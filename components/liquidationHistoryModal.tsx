@@ -3,6 +3,7 @@ import { ADDRESS, CONFIG } from "../constants";
 import { PrizeToke, Dec, CropDecimals } from "../utils/tokenMaths";
 import React from "react";
 import Image from "next/image";
+import ExternalIconLink from './ExternalIconLink';
 
 function dec(input: any, significantFigures = 3) {
   if (typeof input !== "number" && typeof input !== "string") {
@@ -73,29 +74,27 @@ export const LiquidationHistoryModal: React.FC<{
           {liquidations.map((liquidation, index) => (
             <React.Fragment key={index}>
               <div style={{ textAlign: 'center' }}>
-              <a
-                        href={
-                          ADDRESS[CONFIG.CHAINNAME].ETHERSCAN + "/tx/" +
+              <ExternalIconLink
+                        url={
+                          ADDRESS[CONFIG.CHAINNAME].ETHERSCAN + '/tx/' +
                           liquidation.transactionHash
-                        }
-                        target="_blank"
-                        rel="noreferrer">
+                        }>
                         <Image
                           src="/images/etherscan.svg"
                           height={18}
                           width={18}
                           alt="etherscan"
                         />
-                      </a>
+                      </ExternalIconLink>
               </div>
               <div>{PrizeToke(liquidation.amountIn)} {ADDRESS[CONFIG.CHAINNAME].PRIZETOKEN.SYMBOL}</div>
               <div style={{ textAlign: 'right' }}>
                 {CropDecimals(Dec(liquidation.amountOut, historyPair.DECIMALS))} {historyPair.SYMBOL}
               </div>
               <div>
-                <a href={`${ADDRESS[CONFIG.CHAINNAME].ETHERSCAN}/address/${liquidation.receiver}`}>
+                <ExternalIconLink url={`${ADDRESS[CONFIG.CHAINNAME].ETHERSCAN}/address/${liquidation.receiver}`}>
                   {liquidation.receiver.substring(0, 6)}
-                </a>
+                </ExternalIconLink>
               </div>
               {/* <div style={{ textAlign: 'center' }}>20%</div> */}
             </React.Fragment>

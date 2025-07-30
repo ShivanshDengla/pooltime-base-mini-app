@@ -137,21 +137,7 @@ const Vaults: React.FC<VaultProps> = ({
               marginRight: '8px',
             }}
           /> */}
-      {/* Aave protocol has been paused and resulted in a pause on DAI and USDC vaults. All funds are safe! <br></br>{" "}
-          <a href="https://app.aave.com/governance/proposal/?proposalId=358" className="custom-link">
-            {" "}
-            <FontAwesomeIcon
-              icon={faExternalLink}
-              size="sm"
-              style={{
-                color: "black",
-                height: "14px",
-                marginLeft: "6px",
-              }}
-            />
-          </a>
-        </div> 
-      </div>*/}
+      {/* Aave protocol has been paused and resulted in a pause on DAI and USDC vaults. All funds are safe! */}
       {vaults.length > 0 && (
         <div className="app-container">
           <div className="box-header" style={{ width: "200px" }}>

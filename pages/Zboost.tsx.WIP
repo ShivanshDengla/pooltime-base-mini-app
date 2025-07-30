@@ -31,6 +31,7 @@ import PrizeTokenBalance from "../components/prizeTokenBalance";
 import PrizeIcon from "../components/prizeIcon";
 import { Multicall } from "../utils/multicall";
 import { PrizeToke } from "../utils/tokenMaths";
+import ExternalIconLink from '../components/ExternalIconLink';
 
 const MAX_ETH_FUNDING = 20;
 const MIN_ETH_FUNDING = 0.1;
@@ -73,17 +74,14 @@ const AddressRow: React.FC<AddressRowProps> = ({ name, address }) => {
           }}
           onClick={() => CopyToClipboardButton(address)}
         />
-        <a
-          href={`${ADDRESS[CONFIG.CHAINNAME].ETHERSCAN}/address/${address}`}
-          target="_blank"
-          rel="noreferrer">
+        <ExternalIconLink url={`${ADDRESS[CONFIG.CHAINNAME].ETHERSCAN}/address/${address}`}>
           <Image
             src="/images/etherscan.svg"
             height={14}
             width={14}
             alt="etherscan"
           />
-        </a>
+        </ExternalIconLink>
       </span>
     </div>
   );
@@ -270,13 +268,13 @@ console.log("boooooster",ADDRESS[CONFIG.CHAINNAME].WINBOOSTER)
       toast(
         <>
           POOL approved! &nbsp;
-          <a href={etherscanLink} target="_blank" rel="noopener noreferrer">
+          <ExternalIconLink url={etherscanLink}>
             <FontAwesomeIcon
               icon={faUpRightFromSquare}
               height={15}
               width={15}
             />
-          </a>
+          </ExternalIconLink>
         </>,
         { position: toast.POSITION.BOTTOM_LEFT }
       );
@@ -296,13 +294,13 @@ console.log("boooooster",ADDRESS[CONFIG.CHAINNAME].WINBOOSTER)
       toast(
         <>
           POOL withdraw! &nbsp;
-          <a href={etherscanLink} target="_blank" rel="noopener noreferrer">
+          <ExternalIconLink url={etherscanLink}>
             <FontAwesomeIcon
               icon={faUpRightFromSquare}
               height={15}
               width={15}
             />
-          </a>
+          </ExternalIconLink>
         </>,
         { position: toast.POSITION.BOTTOM_LEFT }
       );
@@ -319,13 +317,13 @@ console.log("boooooster",ADDRESS[CONFIG.CHAINNAME].WINBOOSTER)
       toast(
         <>
           POOL deposited! &nbsp;
-          <a href={etherscanLink} target="_blank" rel="noopener noreferrer">
+          <ExternalIconLink url={etherscanLink}>
             <FontAwesomeIcon
               icon={faUpRightFromSquare}
               height={15}
               width={15}
             />
-          </a>
+          </ExternalIconLink>
         </>,
         { position: toast.POSITION.BOTTOM_LEFT }
       );
@@ -365,13 +363,13 @@ console.log("boooooster",ADDRESS[CONFIG.CHAINNAME].WINBOOSTER)
       toast(
         <>
          Win Booster Funded! &nbsp;
-          <a href={etherscanLink} target="_blank" rel="noopener noreferrer">
+          <ExternalIconLink url={etherscanLink}>
             <FontAwesomeIcon
               icon={faUpRightFromSquare}
               height={15}
               width={15}
             />
-          </a>
+          </ExternalIconLink>
         </>,
         { position: toast.POSITION.BOTTOM_LEFT }
       );
@@ -403,13 +401,13 @@ console.log("boooooster",ADDRESS[CONFIG.CHAINNAME].WINBOOSTER)
       toast(
         <>
           Max Claim Cost Updated! &nbsp;
-          <a href={etherscanLink} target="_blank" rel="noopener noreferrer">
+          <ExternalIconLink url={etherscanLink}>
             <FontAwesomeIcon
               icon={faUpRightFromSquare}
               height={15}
               width={15}
             />
-          </a>
+          </ExternalIconLink>
         </>,
         { position: toast.POSITION.BOTTOM_LEFT }
       );
@@ -902,17 +900,14 @@ return (<>
                           }
 
                           </div>
-                          <a
-                            href={`${ADDRESS[CONFIG.CHAINNAME].ETHERSCAN}/tx/${event.transactionHash}`}
-                            target="_blank"
-                            rel="noreferrer">
+                          <ExternalIconLink url={`${ADDRESS[CONFIG.CHAINNAME].ETHERSCAN}/tx/${event.transactionHash}`}>
                             <Image
                               src="/images/etherscan.svg"
                               height={14}
                               width={14}
                               alt="Etherscan"
                             />
-                          </a>
+                          </ExternalIconLink>
                         </div>
                       ))}
                     </div>

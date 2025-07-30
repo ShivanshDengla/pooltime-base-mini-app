@@ -21,6 +21,7 @@ import {
   faUpRightFromSquare,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ExternalIconLink from './ExternalIconLink';
 
 const profitMarginUsd = 0.5;
 
@@ -87,13 +88,13 @@ export const RelayAuction: React.FC<RelayAuctionProps> = ({ reserve }) => {
         toast(
           <>
             Relay success! &nbsp;
-            <a href={etherscanLink} target="_blank" rel="noopener noreferrer">
+            <ExternalIconLink url={etherscanLink}>
               <FontAwesomeIcon
                 icon={faUpRightFromSquare}
                 height={15}
                 width={15}
               />
-            </a>
+            </ExternalIconLink>
           </>,
           { position: toast.POSITION.BOTTOM_LEFT }
         );
