@@ -1,0 +1,29 @@
+{
+    "accountAssociation": {
+      "header": "eyJmaWQiOjExNTkxLCJ0eXBlIjoiY3VzdG9keSIsImtleSI6IjB4MDNkYkRmZjQ2YzY0YThBNDA0NUUwNjdGMzBkYjE3ODZlOTVGNzBkMyJ9",
+      "payload": "eyJkb21haW4iOiJwb29sdGltZS5hcHAifQ",
+      "signature": "MHg0ZmUyMjk2NjBiNWQzNzgyMWMyNGM1NDgyOWZjYTA3ZDlhMjBmNzIxYzMwZDJmY2JiZTk4N2EzYzcyZmY4MmVhNThiZGJkYmMwNTk2MThmNWM5ZGQ5OTE1OWU0ZGIyYTEzMWNlYzMwZjg2YWMyODBhN2Y3NDMwZDcxMDNjMzc2MTFi"
+    },
+    "frame": {
+    "name": "PoolTime",
+    "version": "1",
+    "iconUrl": "https://pooltime-base-mini-app.vercel.app/_next/image?url=%2Fimages%2Fsquarepool.png&w=256&q=75",
+    "homeUrl": "https://pooltime-base-mini-app.vercel.app",
+    "imageUrl": "https://pooltime-base-mini-app.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fpooltogether.1f88d92b.png&w=1920&q=75",
+    "buttonTitle": "Launch",
+    "splashImageUrl": "https://pooltime-base-mini-app.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fpooltogether.1f88d92b.png&w=1920&q=75",
+    "splashBackgroundColor": "#1a415e",
+    "webhookUrl": "https://pooltime-base-mini-app.vercel.app/api/webhook",
+    "subtitle": "Your all-in-one front end for PoolTogether V5",
+    "description": "Save and Win with PoolTogether",
+    "primaryCategory": "finance",
+    "tags": [
+      "defi",
+      "savings",
+      "win"
+    ],
+    "tagline": "Save and Win",
+    "ogTitle": "PoolTime",
+    "ogImageUrl": "https://pooltime-base-mini-app.vercel.app/_next/image?url=%2Fimages%2Fsquarepool.png&w=256&q=75"
+    }
+  }
