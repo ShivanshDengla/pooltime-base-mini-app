@@ -133,15 +133,17 @@ const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <OverviewProvider>
-      <WagmiProvider config={config}>
-        <QueryClientProvider client={queryClient}>
-          <RainbowKitProvider>
-            <Component {...pageProps} />
-          </RainbowKitProvider>
-        </QueryClientProvider>
-      </WagmiProvider>
-    </OverviewProvider>
+    <FarcasterFrameProvider>
+      <OverviewProvider>
+        <WagmiProvider config={config}>
+          <QueryClientProvider client={queryClient}>
+            <RainbowKitProvider>
+              <Component {...pageProps} />
+            </RainbowKitProvider>
+          </QueryClientProvider>
+        </WagmiProvider>
+      </OverviewProvider>
+    </FarcasterFrameProvider>
   );
 }
 
