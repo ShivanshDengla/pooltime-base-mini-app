@@ -3,28 +3,32 @@
       "name": "PoolTime",
       "version": "1",
       "iconUrl": "https://pooltime-mini.vercel.app//images/squarepool.png",
-      "homeUrl": "https://pooltime-mini.vercel.app/",
+      "homeUrl": "https://pooltime-mini.vercel.app",
       "imageUrl": "https://pooltime-mini.vercel.app//images/embed.png",
       "buttonTitle": "Launch",
       "splashImageUrl": "https://pooltime-mini.vercel.app//images/squarepool.png",
       "splashBackgroundColor": "#1a415e",
-      "subtitle": "Front end for PoolTogether V5",
+      "webhookUrl": "https://pooltime-mini.vercel.app/api/webhook",
+      "subtitle": "Save and Win",
       "description": "Save and Win with PoolTogether",
       "primaryCategory": "finance",
+      "heroImageUrl": "https://pooltime-mini.vercel.app//images/embed.png",
       "tags": [
         "defi",
         "savings",
-        "win"
+        "win",
+        "pooltogether",
+        "pooltime"
       ],
-      "heroImageUrl": "https://pooltime-mini.vercel.app//images/embed.png",
       "tagline": "Save and Win",
-      "ogTitle": "PoolTime",
-      "ogDescription": "Save and Win with PoolTogether",
-      "ogImageUrl": "https://pooltime-mini.vercel.app//images/squarepool.png"
+      "ogTitle": "Save and Win with PoolTogether",
+      "ogDescription": "Save and Win with PoolTogether V5",
+      "ogImageUrl": "https://pooltime-mini.vercel.app//images/embed.png",
+      "castShareUrl": "https://warpcast.com/~/compose?text=Check+out+this+mini+app+PoolTime+%F0%9F%94%A5+https%3A%2F%2Fpooltime-mini.vercel.app%2F"
     },
     "accountAssociation": {
       "header": "eyJmaWQiOjExNTkxLCJ0eXBlIjoiY3VzdG9keSIsImtleSI6IjB4MDNkYkRmZjQ2YzY0YThBNDA0NUUwNjdGMzBkYjE3ODZlOTVGNzBkMyJ9",
-      "payload": "eyJkb21haW4iOiJwb29sdGltZS1iYXNlLW1pbmktYXBwLnZlcmNlbC5hcHAifQ",
-      "signature": "MHhiZTM4NmMxYWQ4MDhhZDI2MTYwYjg3OTE4MzNjYWEzYjBkZGU3ZDg1MjFhNDRlNDg2ZjQ4MTQwNDRkNTk5MTI2M2ZmOWU1ZTkxODk5YWNkYjQxN2I2OWQwZTM4NmE4ZWY1ZTdiYzZlNGY4MDY4NTkzNDg2ZGVlNTJhNGM1ODNhMDFj"
+      "payload": "eyJkb21haW4iOiJwb29sdGltZS1taW5pLnZlcmNlbC5hcHAifQ",
+      "signature": "MHhlYmQ3Njk0Njg5ODdhNjhkYTljNTljMzRiYTZlNGM3NTgxYzI2ZDU0ZjdiMTBiN2ZjYmJlODY5NGNiMTI3NWIzMjQzNTYyYmI5YzlkYTkxMTI0ZGViNDkzNDRkOThhZWIyNDFmNTUxMGFmZTc0NmY2NjYzZmNkMDE4M2UyNjZkNDFj"
     }
   }
