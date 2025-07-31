@@ -2,11 +2,11 @@
     "frame": {
       "name": "PoolTime",
       "version": "1",
-      "iconUrl": "https://pooltime-base-mini-app.vercel.app/_next/image?url=%2Fimages%2Fsquarepool.png&w=256&q=75",
+      "iconUrl": "https://pooltime-base-mini-app.vercel.app/images/squarepool.png",
       "homeUrl": "https://pooltime-base-mini-app.vercel.app",
-      "imageUrl": "https://pooltime-base-mini-app.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fpooltogether.1f88d92b.png&w=1920&q=75",
+      "imageUrl": "https://pooltime-base-mini-app.vercel.app/images/embed.png",
       "buttonTitle": "Launch",
-      "splashImageUrl": "https://pooltime-base-mini-app.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fpooltogether.1f88d92b.png&w=1920&q=75",
+      "splashImageUrl": "https://pooltime-base-mini-app.vercel.app/images/embed.png",
       "splashBackgroundColor": "#1a415e",
       "subtitle": "Front end for PoolTogether V5",
       "description": "Save and Win with PoolTogether",
@@ -16,11 +16,11 @@
         "savings",
         "win"
       ],
-      "heroImageUrl": "https://pooltime-base-mini-app.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fpooltogether.1f88d92b.png&w=1920&q=75",
+      "heroImageUrl": "https://pooltime-base-mini-app.vercel.app/images/embed.png",
       "tagline": "Save and Win",
       "ogTitle": "PoolTime",
       "ogDescription": "Save and Win with PoolTogether",
-      "ogImageUrl": "https://pooltime-base-mini-app.vercel.app/_next/image?url=%2Fimages%2Fsquarepool.png&w=256&q=75"
+      "ogImageUrl": "https://pooltime-base-mini-app.vercel.app/images/squarepool.png"
     },
     "accountAssociation": {
       "header": "eyJmaWQiOjExNTkxLCJ0eXBlIjoiY3VzdG9keSIsImtleSI6IjB4MDNkYkRmZjQ2YzY0YThBNDA0NUUwNjdGMzBkYjE3ODZlOTVGNzBkMyJ9",
