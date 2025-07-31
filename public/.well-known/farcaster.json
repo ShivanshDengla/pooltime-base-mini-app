@@ -6,7 +6,7 @@
       "homeUrl": "https://pooltime-base-mini-app.vercel.app",
       "imageUrl": "https://pooltime-base-mini-app.vercel.app/images/embed.png",
       "buttonTitle": "Launch",
-      "splashImageUrl": "https://pooltime-base-mini-app.vercel.app/images/embed.png",
+      "splashImageUrl": "https://pooltime-base-mini-app.vercel.app/images/squarepool.png",
       "splashBackgroundColor": "#1a415e",
       "subtitle": "Front end for PoolTogether V5",
       "description": "Save and Win with PoolTogether",
