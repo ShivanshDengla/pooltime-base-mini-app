@@ -16,8 +16,10 @@
         "savings",
         "win"
       ],
+      "heroImageUrl": "https://pooltime-base-mini-app.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fpooltogether.1f88d92b.png&w=1920&q=75",
       "tagline": "Save and Win",
       "ogTitle": "PoolTime",
+      "ogDescription": "Save and Win with PoolTogether",
       "ogImageUrl": "https://pooltime-base-mini-app.vercel.app/_next/image?url=%2Fimages%2Fsquarepool.png&w=256&q=75"
     },
     "accountAssociation": {
