@@ -41,14 +41,14 @@ const Layout = ({ children }: LayoutProps) => {
          {/* Farcaster Frame Meta Tag */}
          <meta name="fc:frame" content='{
            "version": "next",
-            "imageUrl": "https://pooltime-mini.vercel.app//images/embed.png",
+            "imageUrl": "https://pooltime-base-mini-app.vercel.app/images/embed.png",
            "button":{
              "title": "Launch",
              "action": {
                "type": "launch_frame",
-               "name": "PoolTime",
-               "url": "https://pooltime-mini.vercel.app/",
-               "splashImageUrl": "https://pooltime-mini.vercel.app//images/squarepool.png",
+               "name": "PoolTime",s
+               "url": "https://pooltime-base-mini-app.vercel.app",
+               "splashImageUrl": "https://pooltime-base-mini-app.vercel.app/images/squarepool.png",
                "splashBackgroundColor": "#1a415e"
              }
            }
