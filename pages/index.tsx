@@ -39,21 +39,12 @@ const Layout = ({ children }: LayoutProps) => {
         <link rel="icon" href="/favicon.ico" sizes="any" />
 
          {/* Farcaster Frame Meta Tag */}
-         <meta name="fc:frame" content='{
-           "version": "next",
-            "imageUrl": "https://pooltime-base-mini-app.vercel.app/images/embedd.png",
-           "button":{
-             "title": "Launch",
-             "action": {
-               "type": "launch_frame",
-               "name": "PoolTime",s
-               "url": "https://pooltime-base-mini-app.vercel.app",
-               "splashImageUrl": "https://pooltime-base-mini-app.vercel.app/images/squarepool.png",
-               "splashBackgroundColor": "#1a415e"
-             }
-           }
-         }' data-rh="true" />
-         
+         <meta property="fc:frame" content="vNext" />
+    <meta property="fc:frame:image" content="https://pooltime-base-mini-app.vercel.app/images/embed.png" />
+    <meta property="fc:frame:button:1" content="Launch" />
+    <meta property="fc:frame:button:1:action" content="link" />
+    <meta property="fc:frame:button:1:target" content="https://pooltime-base-mini-app.vercel.app" />
+
       </Head>
       <div style={{ marginTop: "12px" }}>
         <main>
