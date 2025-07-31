@@ -38,13 +38,6 @@ const Layout = ({ children }: LayoutProps) => {
         <meta content="Your all-in-one front end for PoolTogether V5." name="description" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
 
-         {/* Farcaster Frame Meta Tag */}
-         <meta property="fc:frame" content="vNext" />
-    <meta property="fc:frame:image" content="https://pooltime-base-mini-app.vercel.app/images/embed.png" />
-    <meta property="fc:frame:button:1" content="Launch" />
-    <meta property="fc:frame:button:1:action" content="link" />
-    <meta property="fc:frame:button:1:target" content="https://pooltime-base-mini-app.vercel.app" />
-
       </Head>
       <div style={{ marginTop: "12px" }}>
         <main>
