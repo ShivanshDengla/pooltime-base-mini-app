@@ -41,7 +41,7 @@ const Layout = ({ children }: LayoutProps) => {
          {/* Farcaster Frame Meta Tag */}
          <meta name="fc:frame" content='{
            "version": "next",
-            "imageUrl": "https://pooltime-base-mini-app.vercel.app/images/embed.png",
+            "imageUrl": "https://pooltime-base-mini-app.vercel.app/images/embedd.png",
            "button":{
              "title": "Launch",
              "action": {

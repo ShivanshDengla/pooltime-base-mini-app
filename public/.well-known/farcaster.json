@@ -4,7 +4,7 @@
       "version": "1",
       "iconUrl": "https://pooltime-base-mini-app.vercel.app/images/squarepool.png",
       "homeUrl": "https://pooltime-base-mini-app.vercel.app",
-      "imageUrl": "https://pooltime-base-mini-app.vercel.app/images/embed.png",
+      "imageUrl": "https://pooltime-base-mini-app.vercel.app/images/embedd.png",
       "buttonTitle": "Launch",
       "splashImageUrl": "https://pooltime-base-mini-app.vercel.app/images/squarepool.png",
       "splashBackgroundColor": "#1a415e",
@@ -16,7 +16,7 @@
         "savings",
         "win"
       ],
-      "heroImageUrl": "https://pooltime-base-mini-app.vercel.app/images/embed.png",
+      "heroImageUrl": "https://pooltime-base-mini-app.vercel.app/images/embedd.png",
       "tagline": "Save and Win",
       "ogTitle": "PoolTime",
       "ogDescription": "Save and Win with PoolTogether",
