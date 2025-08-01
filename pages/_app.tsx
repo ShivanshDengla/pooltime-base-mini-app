@@ -16,11 +16,11 @@ import {
   RainbowKitProvider,
   Chain,
 } from "@rainbow-me/rainbowkit";
-import { WagmiProvider, createConfig } from "wagmi";
+import { WagmiProvider } from "wagmi";
 import { optimism, mainnet, arbitrum, base } from "wagmi/chains";
 
 import { connect } from 'wagmi/actions';
-import { http } from "viem";
+import { useAccount } from 'wagmi';
 
 // Define Scroll as a custom chain
 const scroll:Chain = {
@@ -115,40 +115,34 @@ const rainbowConfig = getDefaultConfig({
   ssr: true,
 });
 
-const config = createConfig({
-  chains: [customOptimism, mainnet, arbitrum, base, scroll, gnosis],
-  transports: {
-    [customOptimism.id]: http(customOptimism.rpcUrls.default.http[0]),
-    [mainnet.id]: http(mainnet.rpcUrls.default.http[0]),
-    [arbitrum.id]: http(arbitrum.rpcUrls.default.http[0]),
-    [base.id]: http(base.rpcUrls.default.http[0]),
-    [scroll.id]: http(scroll.rpcUrls.default.http[0]),
-    [gnosis.id]: http(gnosis.rpcUrls.default.http[0]),
-  },
-  connectors: [],
-});
+// Use the RainbowKit helper which already bundles a full connector set (MetaMask, WalletConnect, Coinbase Wallet, etc.)
+// This restores the "Connect" modal after a user disconnects and enables non-Farcaster wallets as well.
+const config = rainbowConfig;
 
 
 const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <FarcasterFrameProvider>
-      <OverviewProvider>
-        <WagmiProvider config={config}>
+    <WagmiProvider config={config}>
+      <FarcasterFrameProvider>
+        <OverviewProvider>
           <QueryClientProvider client={queryClient}>
             <RainbowKitProvider>
               <Component {...pageProps} />
             </RainbowKitProvider>
           </QueryClientProvider>
-        </WagmiProvider>
-      </OverviewProvider>
-    </FarcasterFrameProvider>
+        </OverviewProvider>
+      </FarcasterFrameProvider>
+    </WagmiProvider>
   );
 }
 
 function FarcasterFrameProvider({ children }: React.PropsWithChildren<{}>) {
   const [isClient, setIsClient] = useState(false);
+
+  // Track connection status
+  const { status } = useAccount();
 
   useEffect(() => {
     setIsClient(true);
@@ -178,6 +172,26 @@ function FarcasterFrameProvider({ children }: React.PropsWithChildren<{}>) {
       initFarcaster();
     }
   }, []);
+
+  // Attempt to automatically reconnect if the user disconnects while still inside a Farcaster frame.
+  useEffect(() => {
+    if (!isClient || status !== 'disconnected') return;
+
+    (async () => {
+      try {
+        const FrameSDK = (await import('@farcaster/frame-sdk')).default;
+        const farcasterFrame = (await import('@farcaster/frame-wagmi-connector')).default;
+
+        const context = await FrameSDK.context;
+
+        if (context?.client.clientFid) {
+          connect(config, { connector: farcasterFrame() });
+        }
+      } catch (err) {
+        console.error('Error re-connecting Farcaster Frame:', err);
+      }
+    })();
+  }, [status, isClient]);
 
   // Only render children on client-side
   if (!isClient) return null;
