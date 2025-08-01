@@ -1,4 +1,5 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { useConnect } from "wagmi";
 
 interface ConnectProps {
   connectText: string;
@@ -17,6 +18,15 @@ export const MyConnect: React.FC<ConnectProps> = ({ connectText }) => {
       cursor: "pointer",
       marginTop: "10px",
     },
+  };
+  const { connect } = useConnect();
+  const handleFarcasterConnect = async () => {
+    try {
+      const farcasterFrame = (await import("@farcaster/frame-wagmi-connector")).default;
+      await connect({ connector: farcasterFrame() });
+    } catch (err) {
+      console.error("Farcaster connect failed", err);
+    }
   };
   return (
     <>
@@ -69,13 +79,21 @@ export const MyConnect: React.FC<ConnectProps> = ({ connectText }) => {
                 {(() => {
                   if (!connected) {
                     return (
-                      <button
-                        onClick={openConnectModal}
-                        type="button"
-                        className="hover-button"
-                        style={styles.button}>
-                        {connectText}
-                      </button>
+                      <div style={{ display: "flex", gap: 8 }}>
+                        <button
+                          onClick={openConnectModal}
+                          type="button"
+                          className="hover-button"
+                          style={styles.button}>
+                          {connectText}
+                        </button>
+                        <button
+                          onClick={handleFarcasterConnect}
+                          type="button"
+                          style={styles.button}>
+                          Farcaster
+                        </button>
+                      </div>
                     );
                   }
                   if (chain.unsupported) {
