@@ -153,10 +153,10 @@ function FarcasterFrameProvider({ children }: React.PropsWithChildren<{}>) {
 
           const context = await FrameSDK.context;
 
-          // Autoconnect if running in a frame
-          if (context?.client.clientFid) {
-            connect(config, { connector: farcasterFrame() });
-          }
+          // Optionally auto-connect. We disable by default so users can choose any wallet.
+          // if (context?.client.clientFid) {
+          //   connect(config, { connector: farcasterFrame() });
+          // }
 
           // Hide splash screen after UI renders
           FrameSDK.actions.ready();
