@@ -20,7 +20,6 @@ import { WagmiProvider } from "wagmi";
 import { optimism, mainnet, arbitrum, base } from "wagmi/chains";
 
 import { connect } from 'wagmi/actions';
-import { useAccount } from 'wagmi';
 
 // Define Scroll as a custom chain
 const scroll:Chain = {
@@ -141,9 +140,6 @@ function MyApp({ Component, pageProps }: AppProps) {
 function FarcasterFrameProvider({ children }: React.PropsWithChildren<{}>) {
   const [isClient, setIsClient] = useState(false);
 
-  // Track connection status
-  const { status } = useAccount();
-
   useEffect(() => {
     setIsClient(true);
 
@@ -172,26 +168,6 @@ function FarcasterFrameProvider({ children }: React.PropsWithChildren<{}>) {
       initFarcaster();
     }
   }, []);
-
-  // Attempt to automatically reconnect if the user disconnects while still inside a Farcaster frame.
-  useEffect(() => {
-    if (!isClient || status !== 'disconnected') return;
-
-    (async () => {
-      try {
-        const FrameSDK = (await import('@farcaster/frame-sdk')).default;
-        const farcasterFrame = (await import('@farcaster/frame-wagmi-connector')).default;
-
-        const context = await FrameSDK.context;
-
-        if (context?.client.clientFid) {
-          connect(config, { connector: farcasterFrame() });
-        }
-      } catch (err) {
-        console.error('Error re-connecting Farcaster Frame:', err);
-      }
-    })();
-  }, [status, isClient]);
 
   // Only render children on client-side
   if (!isClient) return null;
