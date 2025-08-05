@@ -306,21 +306,33 @@ const Vault: React.FC<VaultProps> = ({
     }
   };
 
-  // Use useEffect to monitor the status and data after the call is made
-  useEffect(() => {
-    if (isSendingSuccess) {
-      console.log("Batch call success:", id);
-      toast("Deposit processing...", {
-        position: toast.POSITION.BOTTOM_LEFT,
-      });
-    }
 
     if (isSendingError) {
-      console.error("Batch call failed");
-      toast("Batch deposit failed: Check console for details", {
-        position: toast.POSITION.BOTTOM_LEFT,
-      });
-    }
+  console.warn("Batch call failed, falling back to approve + deposit");
+
+  toast.dismiss();
+
+  if (
+    vaultData &&
+    parseFloat(buyAmount) > 0 &&
+    writeApprove &&
+    typeof vaultData.decimals === "number"
+  ) {
+    const parsedAmount = ethers.utils
+      .parseUnits(buyAmount, vaultData.decimals)
+      .toString();
+
+    const args: [string, string] = [vaultData.address, parsedAmount];
+
+    writeApprove({
+      address: vaultData.asset as `0x${string}`,
+      abi: ABI.ERC20,
+      functionName: "approve",
+      args,
+    });
+  }
+}
+
   }, [isSendingSuccess, isSendingError, id]);
 
   const handleShowToast = (action: any) => {
