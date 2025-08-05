@@ -82,7 +82,7 @@ const initialChains = Object.keys(ADDRESS).map((chainName) => {
     active: chainData.ACTIVE !== undefined ? chainData.ACTIVE : true, // If ACTIVE is not present, default to true
     color: chainData.COLOR,
   };
-});
+}).filter((chain) => chain.name === "BASE");
 
 const hasTokens = (vaults: VaultData[]) => {
   return vaults.some(
@@ -392,7 +392,10 @@ function AllVaults() {
         // Handle `vaultsResponse` response
         if (vaultsResponse && vaultsResponse.ok) {
           try {
-            vaults = await vaultsResponse.json();
+            const allApiVaults = await vaultsResponse.json();
+            vaults = allApiVaults.filter(
+              (v: any) => v.c === ADDRESS["BASE"].CHAINID
+            );
           } catch (error) {
             console.error("Failed to parse vaults response:", error);
           }
@@ -914,7 +917,7 @@ function AllVaults() {
                       })}
                       &nbsp;
                       {/* przPOOL toggle */}
-                      <div
+                      {/* <div
                         className={`vaults-chain-option ${
                           showPrzPOOLVaults ? "active" : ""
                         }`}
@@ -925,7 +928,7 @@ function AllVaults() {
                           width={24}
                           height={24}
                         />
-                      </div>
+                      </div> */}
                     </div>
                   </div>
 

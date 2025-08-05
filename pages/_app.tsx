@@ -110,7 +110,7 @@ const customOptimism = {
 const rainbowConfig = getDefaultConfig({
   appName: "Pooltime",
   projectId: WALLET_CONNECT_KEY,
-  chains: [customOptimism, mainnet, arbitrum, base, scroll, gnosis, world],
+  chains: [base],
   ssr: true,
 });
 

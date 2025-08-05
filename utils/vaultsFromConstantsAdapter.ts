@@ -1,6 +1,14 @@
 import { Addresses } from "../constants";
 import { ADDRESS } from "../constants";
 
+const getBaseVaults = (addressFile: Addresses): Addresses => {
+  const baseVaults: Addresses = {};
+  if (addressFile["BASE"]) {
+    baseVaults["BASE"] = addressFile["BASE"];
+  }
+  return baseVaults;
+};
+
 type VaultAPIFormat = {
     vault: string;
     name: string;
@@ -46,6 +54,6 @@ type VaultAPIFormat = {
   };
   
   // Example usage
-  export const vaultsAPIFormatted = adaptVaults(ADDRESS);
+  export const vaultsAPIFormatted = adaptVaults(getBaseVaults(ADDRESS));
   console.log(vaultsAPIFormatted);
   
