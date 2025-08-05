@@ -241,8 +241,12 @@ const Vault: React.FC<VaultProps> = ({
 
   //  console.log("capable",capabilities)
 
-  // Completely disable batch transactions; always use manual approve → deposit flow.
-  const canBatchTransactions = (_chainId?: number) => false;
+  const canBatchTransactions = (chainId: number) => {
+    return (
+      capabilities?.[chainId]?.atomic?.status === "ready" ||
+      capabilities?.[chainId]?.atomic?.status === "supported"
+    );
+  };
 
   console.log("can batch", canBatchTransactions(chainId as number));
   const handleCloseModal = () => {
@@ -295,11 +299,6 @@ const Vault: React.FC<VaultProps> = ({
         calls: calls,
       });
 
-      // Provide user feedback that the batch call was submitted
-      toast("Batch transaction submitted. Awaiting confirmation...", {
-        position: toast.POSITION.BOTTOM_LEFT,
-      });
-
       // Log the status immediately after triggering
       console.log("Batch call triggered");
     } catch (err) {
@@ -309,6 +308,37 @@ const Vault: React.FC<VaultProps> = ({
       });
     }
   };
+
+  // Fallback: if the batched call errors, revert to the approve → deposit flow
+  useEffect(() => {
+    if (isSendingError) {
+      console.warn(
+        "Batch call failed, falling back to approve + deposit"
+      );
+
+      toast.dismiss();
+
+      if (
+        vaultData &&
+        parseFloat(buyAmount) > 0 &&
+        writeApprove &&
+        typeof vaultData.decimals === "number"
+      ) {
+        const parsedAmount = ethers.utils
+          .parseUnits(buyAmount, vaultData.decimals)
+          .toString();
+
+        const args: [string, string] = [vaultData.address, parsedAmount];
+
+        writeApprove({
+          address: vaultData.asset as `0x${string}`,
+          abi: ABI.ERC20,
+          functionName: "approve",
+          args,
+        });
+      }
+    }
+  }, [isSendingSuccess, isSendingError, id]);
 
   const handleShowToast = (action: any) => {
     toast.dismiss();
