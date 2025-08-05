@@ -241,18 +241,8 @@ const Vault: React.FC<VaultProps> = ({
 
   //  console.log("capable",capabilities)
 
-  const canBatchTransactions = (chainId: number) => {
-    // Temporary override: Base network wallets incorrectly report batching support.
-    // Explicitly disable atomic batching on Base (chain id 8453) so that the UI
-    // falls back to the standard approve → deposit flow, improving reliability.
-    if (chainId === 8453) {
-      return false;
-    }
-    return (
-      capabilities?.[chainId]?.atomic?.status === "ready" ||
-      capabilities?.[chainId]?.atomic?.status === "supported"
-    );
-  };
+  // Completely disable batch transactions; always use manual approve → deposit flow.
+  const canBatchTransactions = (_chainId?: number) => false;
 
   console.log("can batch", canBatchTransactions(chainId as number));
   const handleCloseModal = () => {
@@ -319,43 +309,6 @@ const Vault: React.FC<VaultProps> = ({
       });
     }
   };
-
-  // Fallback: if the batched call errors, revert to the approve → deposit flow
-  useEffect(() => {
-    const shouldFallback =
-      isSendingError || (callStatusData && callStatusData.status === "failure");
-
-    if (!shouldFallback) return;
-
-    console.warn(
-      "Batch call failed or reverted, falling back to approve + deposit"
-    );
-
-    toast.dismiss();
-    toast("Batch call failed, falling back to approve + deposit", {
-      position: toast.POSITION.BOTTOM_LEFT,
-    });
-
-    if (
-      vaultData &&
-      parseFloat(buyAmount) > 0 &&
-      writeApprove &&
-      typeof vaultData.decimals === "number"
-    ) {
-      const parsedAmount = ethers.utils
-        .parseUnits(buyAmount, vaultData.decimals)
-        .toString();
-
-      const args: [string, string] = [vaultData.address, parsedAmount];
-
-      writeApprove({
-        address: vaultData.asset as `0x${string}`,
-        abi: ABI.ERC20,
-        functionName: "approve",
-        args,
-      });
-    }
-  }, [isSendingError, callStatusData]);
 
   const handleShowToast = (action: any) => {
     toast.dismiss();
