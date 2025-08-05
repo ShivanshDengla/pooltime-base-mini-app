@@ -894,7 +894,7 @@ function AllVaults() {
                       onChange={handleSearch}
                       placeholder="Search..."
                     />
-                    <div className="vaults-chain-toggle">
+                    {/* <div className="vaults-chain-toggle">
                       {chains.map((chain) => {
                         const icon = GetChainIcon(chain.chainId);
                         return (
@@ -929,7 +929,7 @@ function AllVaults() {
                           height={24}
                         />
                       </div> */}
-                    </div>
+                    {/* </div> */}
                   </div>
 
                   {!showStats && (
@@ -1080,7 +1080,7 @@ function AllVaults() {
                 // gap: "1rem",
               }}
             >
-              <div className="vaults-chain-toggle">
+              {/* <div className="vaults-chain-toggle">
                 {chains.map((chain) => {
                   const icon = GetChainIcon(chain.chainId);
                   return (
@@ -1101,7 +1101,7 @@ function AllVaults() {
                     </div>
                   );
                 })}
-              </div>
+              </div> */}
               <input
                 value={searchInput}
                 className="vaultsearch"
