@@ -242,6 +242,12 @@ const Vault: React.FC<VaultProps> = ({
   //  console.log("capable",capabilities)
 
   const canBatchTransactions = (chainId: number) => {
+    // Temporary override: Base network wallets incorrectly report batching support.
+    // Explicitly disable atomic batching on Base (chain id 8453) so that the UI
+    // falls back to the standard approve → deposit flow, improving reliability.
+    if (chainId === 8453) {
+      return false;
+    }
     return (
       capabilities?.[chainId]?.atomic?.status === "ready" ||
       capabilities?.[chainId]?.atomic?.status === "supported"
@@ -299,6 +305,11 @@ const Vault: React.FC<VaultProps> = ({
         calls: calls,
       });
 
+      // Provide user feedback that the batch call was submitted
+      toast("Batch transaction submitted. Awaiting confirmation...", {
+        position: toast.POSITION.BOTTOM_LEFT,
+      });
+
       // Log the status immediately after triggering
       console.log("Batch call triggered");
     } catch (err) {
@@ -311,34 +322,40 @@ const Vault: React.FC<VaultProps> = ({
 
   // Fallback: if the batched call errors, revert to the approve → deposit flow
   useEffect(() => {
-    if (isSendingError) {
-      console.warn(
-        "Batch call failed, falling back to approve + deposit"
-      );
+    const shouldFallback =
+      isSendingError || (callStatusData && callStatusData.status === "failure");
 
-      toast.dismiss();
+    if (!shouldFallback) return;
 
-      if (
-        vaultData &&
-        parseFloat(buyAmount) > 0 &&
-        writeApprove &&
-        typeof vaultData.decimals === "number"
-      ) {
-        const parsedAmount = ethers.utils
-          .parseUnits(buyAmount, vaultData.decimals)
-          .toString();
+    console.warn(
+      "Batch call failed or reverted, falling back to approve + deposit"
+    );
 
-        const args: [string, string] = [vaultData.address, parsedAmount];
+    toast.dismiss();
+    toast("Batch call failed, falling back to approve + deposit", {
+      position: toast.POSITION.BOTTOM_LEFT,
+    });
 
-        writeApprove({
-          address: vaultData.asset as `0x${string}`,
-          abi: ABI.ERC20,
-          functionName: "approve",
-          args,
-        });
-      }
+    if (
+      vaultData &&
+      parseFloat(buyAmount) > 0 &&
+      writeApprove &&
+      typeof vaultData.decimals === "number"
+    ) {
+      const parsedAmount = ethers.utils
+        .parseUnits(buyAmount, vaultData.decimals)
+        .toString();
+
+      const args: [string, string] = [vaultData.address, parsedAmount];
+
+      writeApprove({
+        address: vaultData.asset as `0x${string}`,
+        abi: ABI.ERC20,
+        functionName: "approve",
+        args,
+      });
     }
-  }, [isSendingSuccess, isSendingError, id]);
+  }, [isSendingError, callStatusData]);
 
   const handleShowToast = (action: any) => {
     toast.dismiss();
