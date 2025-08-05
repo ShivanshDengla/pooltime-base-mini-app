@@ -209,14 +209,17 @@ const Vault: React.FC<VaultProps> = ({
     sendCalls: _sendCalls,
   } = useSendCalls();
 
-  const { data: callStatusData, refetch: refetchCallStatus } = useCallsStatus({
+  const {
+    data: callStatusData,
+    refetch: refetchCallStatus,
+  } = useCallsStatus({
     id: id?.id || "",
     query: {
       enabled: !!id,
-      refetchInterval: (data) =>
-        data.state.data?.status === "success" ? false : 1000,
+      refetchInterval: (data: any) =>
+        data.state?.data?.status === "success" ? false : 1000,
     },
-  });
+  } as any);
   console.log("call status data");
   useEffect(() => {
     if (callStatusData) {
@@ -306,33 +309,35 @@ const Vault: React.FC<VaultProps> = ({
     }
   };
 
-
+  // Fallback: if the batched call errors, revert to the approve → deposit flow
+  useEffect(() => {
     if (isSendingError) {
-  console.warn("Batch call failed, falling back to approve + deposit");
+      console.warn(
+        "Batch call failed, falling back to approve + deposit"
+      );
 
-  toast.dismiss();
+      toast.dismiss();
 
-  if (
-    vaultData &&
-    parseFloat(buyAmount) > 0 &&
-    writeApprove &&
-    typeof vaultData.decimals === "number"
-  ) {
-    const parsedAmount = ethers.utils
-      .parseUnits(buyAmount, vaultData.decimals)
-      .toString();
+      if (
+        vaultData &&
+        parseFloat(buyAmount) > 0 &&
+        writeApprove &&
+        typeof vaultData.decimals === "number"
+      ) {
+        const parsedAmount = ethers.utils
+          .parseUnits(buyAmount, vaultData.decimals)
+          .toString();
 
-    const args: [string, string] = [vaultData.address, parsedAmount];
+        const args: [string, string] = [vaultData.address, parsedAmount];
 
-    writeApprove({
-      address: vaultData.asset as `0x${string}`,
-      abi: ABI.ERC20,
-      functionName: "approve",
-      args,
-    });
-  }
-}
-
+        writeApprove({
+          address: vaultData.asset as `0x${string}`,
+          abi: ABI.ERC20,
+          functionName: "approve",
+          args,
+        });
+      }
+    }
   }, [isSendingSuccess, isSendingError, id]);
 
   const handleShowToast = (action: any) => {
