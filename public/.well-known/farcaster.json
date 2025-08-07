@@ -27,7 +27,7 @@
       "screenshotUrls": [
         "https://pooltime-base-mini-app.vercel.app/images/embed.png"
       ],
-      "castShareUrl": "https://warpcast.com/~/compose?text=Check+out+this+mini+app+PoolTime+%F0%9F%94%A5+https%3A%2F%2Fpooltime-mini.vercel.app%2F"
+      "castShareUrl": "https://pooltime-base-mini-app.vercel.app/"
     },
     "accountAssociation": {
       "header": "eyJmaWQiOjI1MTA1MywidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweDVkMzhhRUM3ZTgxZjYzZjZhQjJkOWJDZGE1MzREZEQ4NDAwQTQ1NGIifQ",
