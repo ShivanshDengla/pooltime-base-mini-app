@@ -5,26 +5,33 @@
       "iconUrl": "https://pooltime-base-mini-app.vercel.app/images/squarepool.png",
       "homeUrl": "https://pooltime-base-mini-app.vercel.app",
       "imageUrl": "https://pooltime-base-mini-app.vercel.app/images/embed.png",
-      "buttonTitle": "Launch",
+      "buttonTitle": "Launch PoolTime",
       "splashImageUrl": "https://pooltime-base-mini-app.vercel.app/images/squarepool.png",
       "splashBackgroundColor": "#1a415e",
+      "webhookUrl": "https://pooltime-base-mini-app.vercel.app/api/webhook",
       "subtitle": "Front end for PoolTogether V5",
       "description": "Save and Win with PoolTogether",
       "primaryCategory": "finance",
       "tags": [
         "defi",
         "savings",
-        "win"
+        "win",
+        "pooltime",
+        "pooltogether"
       ],
-      "heroImageUrl": "https://pooltime-base-mini-app.vercel.app/images/embed.png",
       "tagline": "Save and Win",
-      "ogTitle": "PoolTime",
+      "ogTitle": "PoolTime - Save and Win",
       "ogDescription": "Save and Win with PoolTogether",
-      "ogImageUrl": "https://pooltime-base-mini-app.vercel.app/images/squarepool.png"
+      "ogImageUrl": "https://pooltime-base-mini-app.vercel.app/images/embed.png",
+      "heroImageUrl": "https://pooltime-base-mini-app.vercel.app/images/embed.png",
+      "screenshotUrls": [
+        "https://pooltime-base-mini-app.vercel.app/images/embed.png"
+      ],
+      "castShareUrl": "https://warpcast.com/~/compose?text=Check+out+this+mini+app+PoolTime+%F0%9F%94%A5+https%3A%2F%2Fpooltime-mini.vercel.app%2F"
     },
     "accountAssociation": {
-      "header": "eyJmaWQiOjExNTkxLCJ0eXBlIjoiY3VzdG9keSIsImtleSI6IjB4MDNkYkRmZjQ2YzY0YThBNDA0NUUwNjdGMzBkYjE3ODZlOTVGNzBkMyJ9",
+      "header": "eyJmaWQiOjI1MTA1MywidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweDVkMzhhRUM3ZTgxZjYzZjZhQjJkOWJDZGE1MzREZEQ4NDAwQTQ1NGIifQ",
       "payload": "eyJkb21haW4iOiJwb29sdGltZS1iYXNlLW1pbmktYXBwLnZlcmNlbC5hcHAifQ",
-      "signature": "MHhiZTM4NmMxYWQ4MDhhZDI2MTYwYjg3OTE4MzNjYWEzYjBkZGU3ZDg1MjFhNDRlNDg2ZjQ4MTQwNDRkNTk5MTI2M2ZmOWU1ZTkxODk5YWNkYjQxN2I2OWQwZTM4NmE4ZWY1ZTdiYzZlNGY4MDY4NTkzNDg2ZGVlNTJhNGM1ODNhMDFj"
+      "signature": "MHg2ZjRjZDc0NjdmZjFhZWRkODMwNmQzNDYwM2VkMWJiZmYyZmQ0M2JkMmYyMmY5ODlkNDYyNGZkNjkwMWMxMWJmNjYyNWVjMWMxMDMzNzgwN2ZmMjgyZTUyMGIxMTljNzM0MmU1ZGU0NDI2YmVlNWFhZDhkMDYyMDM4MTMyYjYyZjFj"
     }
   }
